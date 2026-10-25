@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-Cookie security analyzer & session auditor
+OCookieX — Cookie Security Analyzer & Session Auditor. It provides uRL fetch with per-hop Set-Cookie capture across the full redirect chain (stdlib urllib, TLS verify toggle). Operators can export results (including machine-readable formats) and gate CI with severity thresholds where supported.
 
 ---
 
@@ -27,14 +27,9 @@ Cookie security analyzer & session auditor
 - URL fetch with per-hop Set-Cookie capture across the full redirect chain (stdlib urllib, TLS verify toggle)
 - Importers — raw Set-Cookie blocks, curl -i output, Netscape cookies.txt, browser JSON exports, Cookie: request headers (auto-detected)
 - Per-cookie deep audit — Secure, HttpOnly, SameSite (Lax / Strict / None+Secure), Path & Domain scope, Max-Age / Expires lifetime, __Host- / __Secure- prefix enforcement, session vs persistent class
-- Session risk engine — session/auth name detection, Shannon entropy & charset bit-strength estimate, predictable / sequential / short ID detection, Base64 / hex / JWT shape detection + JWT decoding (alg=none, exp / nbf / iat, sensitive claims)
+- Session risk engine — session/auth name detection, Shannon entropy & charset bit-strength estimate, predictable / sequential / short ID detection, Base64 / hex / JWT shape detection + JWT decoding (alg=none, exp / nbf /
 - Scope & fixation risks — parent-domain cookies, public-suffix scoping, broad Path, HTTP-set cookies reused on HTTPS, duplicate-name shadowing
 - Jar diff — before/after login comparison, rotation check (session fixation indicator)
-- Tracker heuristics + third-party detection in batch
-- Remediation — secure Set-Cookie, Express, Django, Flask, Laravel, Spring, PHP, ASP.NET, Nginx snippets
-- Batch mode (threaded) with worst-cookie summary
-- Export TXT / CSV / JSON, save chooser, clipboard
-- Full CLI mode (-u, --file, --jwt-inspect, --json ...)
 
 ---
 
@@ -48,7 +43,11 @@ Cookie security analyzer & session auditor
 ## 🚀 Usage
 
 ```bash
-./OCookieX
+./OCookieX                                     # interactive menu
+./OCookieX --json -o report.json
+./OCookieX --file sample.txt
+./OCookieX --url https://example.com
+./OCookieX --help
 ```
 
 ---
